@@ -1,0 +1,96 @@
+#==================================================================================
+#  conky_grey_cai.lua
+#  author  : CAI
+#  version : 20130513
+#  license : Distributed under the terms of GNU GPL version 2 or later
+#							http://cai79.deviantart.com
+#  
+#
+#  original conky_grey.lua
+#							http://www.NoobsLab.com
+#  author  : SLK
+#  version : v2011011601
+#  license : Distributed under the terms of GNU GPL version 2 or later
+#
+#==================================================================================
+
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+temperature_unit celsius
+pad_percents 2
+
+double_buffer yes
+no_buffers yes
+text_buffer_size 2048
+
+gap_x 700
+gap_y 850
+minimum_size 300 100
+maximum_width 600 100
+own_window_class Conky
+own_window yes
+own_window_type normal
+#own_window_argb_visual yes
+# for dark backgrounds:
+own_window_argb_value 100
+# for light backgrounds:
+#own_window_argb_value 180
+own_window_transparent yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+border_inner_margin 0
+border_outer_margin 0
+alignment tl
+
+draw_shades no
+draw_outline no
+# if You don't like left vertical white line, set draw_borders to "no"
+draw_borders no
+draw_graph_borders no
+
+override_utf8_locale yes
+use_xft yes
+xftfont caviar dreams:size=12
+xftalpha 0.5
+uppercase no
+
+default_color FFFFFF
+color1 DDDDDD
+color2 AAAAAA
+color3 888888
+color4 666666
+
+
+#default_bar_size 90 20
+
+TEXT
+${voffset 8}
+# You can adjust refresh interval by changing XXX interval (in seconds) in "{execi XXX ..." 
+${execi 3600 bash ~/.conky/conky_wunderground2/wunderground-script}${color 8e8e8e}${execi 3600 sed -n '1p' ~/.conky/conky_wunderground2/messages.wun} forecast          ${execi 3600 bash $HOME/.conky/conky_wunderground2/wunderground-script}${color 8e8e8e}${execi 3600 sed -n '9p' $HOME/.conky/conky_wunderground2/messages.wun} forecast          ${execi 3600 bash $HOME/.conky/conky_wunderground2/wunderground-script}${color 8e8e8e}${execi 3600 sed -n '17p' $HOME/.conky/conky_wunderground2/messages.wun} forecast
+${voffset -15}
+${alignc 190}${font conkyweather:size=35}${color2}${execi 3600  sed -n '1p' ~/.conky/conky_wunderground2/weather_icons}${font}${alignc 10}${font conkyweather:size=35}${color2}${voffset -29}${execi 3600  sed -n '5p' $HOME/.conky/conky_wunderground2/weather_icons}${font}${alignc -165}${font conkyweather:size=35}${color2}${voffset -29}${execi 3600  sed -n '9p' $HOME/.conky/conky_wunderground2/weather_icons}${font}
+${voffset -20}
+${alignc 100}${font}${execi 3600 sed -n '3p' ~/.conky/conky_wunderground2/messages.wun}${font}${alignc -40}${execi 3600 sed -n '11p' $HOME/.conky/conky_wunderground2/messages.wun}${alignc -190}${execi 3600 sed -n '19p' $HOME/.conky/conky_wunderground2/messages.wun}${font}
+${alignc 94}${execi 36000 sed -n '7p' ~/.conky/conky_wunderground2/messages.wun}${alignc -46}${execi 36000 sed -n '15p' $HOME/.conky/conky_wunderground2/messages.wun}${alignc -193}${execi 36000 sed -n '23p' $HOME/.conky/conky_wunderground2/messages.wun}
+
+# Extended weather
+${voffset 2}
+# You can adjust refresh interval by changing XXX interval (in seconds) in "{execi XXX ..." 
+
+
+
+
+
+# Extended weather
+${voffset 2}
+# You can adjust refresh interval by changing XXX interval (in seconds) in "{execi XXX ..." 
+
+
+
+
+
+
+
+

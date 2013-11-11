@@ -1,0 +1,5 @@
+#${voffset 5}${color3}${font Ubuntu:size=10}[status]${color1}${font}${voffset 5}
+#${goto 5}${goto 30}${voffset -25}${goto 25}[alias] ([group])
+${goto 5}${goto 30}${voffset -15}${goto 25}[alias]
+${color3}${goto 25}[status_message]
+

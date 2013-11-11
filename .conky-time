@@ -1,0 +1,102 @@
+#==================================================================================
+#  .conky_time
+#  author  : Cadaver
+#  version : 20131010
+#  license : Distributed under the terms of GNU GPL version 2 or later
+#                                                       http://www.cadaver.me
+#  
+#  conky_grey_cai.lua
+#  author  : CAI
+#  version : 20130513
+#  license : Distributed under the terms of GNU GPL version 2 or later
+#							http://cai79.deviantart.com
+#  
+#
+#  original conky_grey.lua
+#							http://www.NoobsLab.com
+#  author  : SLK
+#  version : v2011011601
+#  license : Distributed under the terms of GNU GPL version 2 or later
+#
+#==================================================================================
+
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+temperature_unit celsius
+pad_percents 2
+
+double_buffer yes
+no_buffers yes
+text_buffer_size 2048
+
+#Modify to alter position
+gap_x 20
+gap_y 680
+#Modify to resize frame
+minimum_size 160 365
+maximum_width 180
+own_window_class Conky
+own_window yes
+own_window_type normal
+#own_window_argb_visual yes
+# for dark backgrounds:
+own_window_argb_value 100
+# for light backgrounds:
+#own_window_argb_value 180
+own_window_transparent yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+border_inner_margin 0
+border_outer_margin 0
+alignment tr
+
+draw_shades no
+draw_outline no
+# if You don't like left vertical white line, set draw_borders to "no"
+draw_borders no
+draw_graph_borders no
+
+override_utf8_locale yes
+use_xft yes
+xftfont caviar dreams:size=8
+xftalpha 0.5
+uppercase no
+
+default_color FFFFFF
+color0 555555
+color1 DDDDDD
+color2 AAAAAA
+color3 888888
+color4 666666
+
+lua_load ~/.conky/conky_time.lua
+#lua_load .conky/conky_grey_cai.lua
+lua_draw_hook_post main
+
+default_bar_size 90 20
+
+TEXT
+# Date on original clock
+# if original conky_grey clock is enabled, You can enable showing date on it by unreming following block
+${voffset 58}
+${goto 58}${color4}${color1}${font ubuntu:size=9}${time %A}
+${goto 68}${color4}${font ubuntu:size=15}${time %e}
+#${goto 55}${color2}${voffset -2}${font ubuntu:size=9}${time %b}${voffset -2} ${color3}${font ubuntu:size=12}${time %Y}${font}
+
+# CALENDAR
+# Unrem following line if original clock is enabled and date block is uncommented
+${voffset 44}
+# Otherwise unrem following line
+#${voffset 130}
+# You can adjust refresh interval by changing XXX interval (in seconds) in "{execpi XXX ..." 
+${color1}${font Mono:size=10}${execpi 600 ncal -S -Ch |sed '/\(20[0-9][0-9]\)/!s/^.*$/ ${color0} &/;/\(20[0-9][0-9]\)/!s/.\{8\}$/${color0}&/;s/${color0} '"`date +%_d`"' /${color1} '"`date +%_d`"'${color0} /;/color1/!s/ '"`date +%_d`"'$c/${color1} '"`date +%_d`"'$c/;/color1/!s/ '"`date +%_d`"' /${color1} '"`date +%_d`"'${color0} /'}
+#${font}
+
+# Unrem following string if calendar is enabled
+${voffset -35}
+##${voffset 20}
+# Unrem following string if calendar is disabled
+
+
